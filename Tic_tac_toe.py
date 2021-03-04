@@ -12,13 +12,11 @@
 #tic tac toe using tkinter with gui and stuff
 
 # Tic-Tac-Toe
-Tic Tac Toe for the computer project
 from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
 root.title('Tic Tac Toe')
-#root.geometry("1200x710") #Get back to this later
 
 #Define the function b_click
 count=0
@@ -31,98 +29,66 @@ def b_click(m):
         m["text"] = 'O'
     count+=1
     find_winner()
-b1 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b1))
-b2 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b2))
-b3 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b3))
-b4 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b4))
-b5 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b5))
-b6 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b6))
-b7 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b7))
-b8 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b8))
-b9 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b9))
-#"""
 
-#Grid our buttons to the screen
-#Row 1
-b1.grid(row = 0, column = 0)
-b2.grid(row = 0, column = 1)
-b3.grid(row = 0, column = 2)
+def reset():
+    global b, b1, b2, b3, b4, b5, b6, b7, b8, b9
+    global count
+    count = 0
 
-#Row 2
-b4.grid(row = 1, column = 0)
-b5.grid(row = 1, column = 1)
-b6.grid(row = 1, column = 2)
+    b1 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b1))
+    b2 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b2))
+    b3 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b3))
+    b4 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b4))
+    b5 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b5))
+    b6 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b6))
+    b7 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b7))
+    b8 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b8))
+    b9 = Button(root, text =" ",font = ("Helvetica",20), height = 3, width = 6, bg = "SystemButtonFace", command = lambda: b_click(b9))
 
-#Row 3
-b7.grid(row = 2, column = 0)
-b8.grid(row = 2, column = 1)
-b9.grid(row = 2, column = 2)
+    b = [b1,b2,b3,b4,b5,b6,b7,b8,b9]
 
+    #Grid our buttons to the screen
+
+    x = 0
+    for i in range(3):
+        for j in range(3):
+            b[x].grid(row = i, column = j)
+            x+=1
 
 def find_winner():
-    #Checking horizontally
-    if b1["text"]==b2["text"]==b3["text"] and b1["text"]!=" ":
-        b1.config(bg="yellow")
-        b2.config(bg="yellow")
-        b3.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b1["text"]+"\nCONGRATULATIONS!!")
-    elif b4["text"]==b6["text"]==b5["text"] and b6["text"]!=" ":
-        b4.config(bg="yellow")
-        b5.config(bg="yellow")
-        b6.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b6["text"]+"\nCONGRATULATIONS!!")
-    elif b7["text"]==b8["text"]==b9["text"] and b7["text"]!=" ":
-        b7.config(bg="yellow")
-        b8.config(bg="yellow")
-        b9.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b7["text"]+"\nCONGRATULATIONS!! ")
-
-    #Checking vertically
-    elif b1["text"]==b4["text"]==b7["text"] and b4["text"]!=" ":
-        b1.config(bg="yellow")
-        b4.config(bg="yellow")
-        b7.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b4["text"]+"\nCONGRATULATIONS!!")
-    elif b2["text"]==b5["text"]==b8["text"] and b2["text"]!=" ":
-        b2.config(bg="yellow")
-        b5.config(bg="yellow")
-        b8.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b2["text"]+"\nCONGRATULATIONS!!")
-    elif b3["text"]==b6["text"]==b9["text"] and b9["text"]!=" ":
-        b3.config(bg="yellow")
-        b6.config(bg="yellow")
-        b9.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b9["text"]+"\nCONGRATULATIONS!!")
-
-    #Checking diagonally
-    elif b1["text"]==b5["text"]==b9["text"] and b9["text"]!=" ":
-        b1.config(bg="yellow")
-        b5.config(bg="yellow")
-        b9.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b1["text"]+"\nCONGRATULATIONS!!")
-    elif b3["text"]==b5["text"]==b7["text"] and b7["text"]!=" ":
-        b3.config(bg="yellow")
-        b7.config(bg="yellow")
-        b5.config(bg="yellow")
-        disable()
-        messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b7["text"]+"\nCONGRATULATIONS!!")
-    elif count==9:
+    #To check if winnner
+    #r --> rows     c --> columns   d --> diagonals
+    r = [[b1,b2,b3], [b4,b5,b6], [b7,b8,b9]]
+    c = [[b1,b4,b7], [b2,b5,b8], [b3,b6,b9]]
+    d = [[b1,b5,b9], [b3,b5,b7]]
+    win = [r, c, d]
+    res = False
+    for i in win:
+        for j in i:
+            if j[0]["text"]==j[1]["text"]==j[2]["text"] and j[0]["text"]!=" ":
+                for k in j:
+                    k.config(bg="yellow")
+                disable()
+                messagebox.showinfo("Tic-Tac_Toe","WINNERR is "+b1["text"]+"\nCONGRATULATIONS!!")
+                res = True
+    #To check if draw
+    if count == 9 and res == False :
         messagebox.showinfo("Tic-Tac_Toe","IT'S A DRAW!")
+
 def disable():
-    b1.config(state=DISABLED)
-    b2.config(state=DISABLED)
-    b3.config(state=DISABLED)
-    b4.config(state=DISABLED)
-    b5.config(state=DISABLED)
-    b6.config(state=DISABLED)
-    b7.config(state=DISABLED)
-    b8.config(state=DISABLED)
-    b9.config(state=DISABLED)
+    global b
+    for i in b:
+        i.config(state = DISABLED)
+
+#Creating menu
+my_menu = Menu(root)
+root.config(menu = my_menu)
+
+#Creating options in the Menu
+options_menu = Menu(root, tearoff = False)
+my_menu.add_cascade(label = "Options", menu = options_menu)
+options_menu.add_command(label = "Reset Game", command = reset)
+
+reset()
+
 root.mainloop()
